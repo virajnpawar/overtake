@@ -13,17 +13,29 @@ body {
     width: 100%;
 }
 
+::selection {
+    background: #000000;  /* Gold highlight */
+    color: #ffffff;          /* Black text */
+  }
+  
+  ::-moz-selection {
+    background: #000000;
+    color: #ffffff;
+  }
+  
 @font-face {
     font-family: 'Nebulica-Black';
     src: url('./assets/Fonts/Nebulica-Black.ttf') format('truetype');
     font-weight: 900;
     font-style: normal;
+    line-height: 1.6;
 }
 @font-face {
     font-family: 'Nebulica-Bold';
     src: url('./assets/Fonts/Nebulica-Bold.ttf') format('truetype');
     font-weight: bold;
     font-style: normal;
+    
 }
 @font-face {
     font-family: 'Nebulica-ExtraBold';
@@ -74,7 +86,7 @@ body {
 }
 
 .hero {
-    height: 100vh;
+    height: auto;
     width: 100%;
     background-color: #ffffff;
 
@@ -167,24 +179,35 @@ body {
 }
 
 .intro {
+    color: #ffffff;
     height: 100vh;
     width: 100%;
-    background-color: #000000;
+    background-image: url('assets/image/page2.png');
+    background-size: cover;
+    background-position: center;
 }
 
-
-
-.scroll-wrapper {
+.services{
     height: 100vh;
-    overflow: auto;
-  }
-  
-  .scroll-content {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .Godfather {
-    height: 100vh;
-    flex-shrink: 0;
-  }
+    width: 100%;
+}
+
+.txt-h1{
+    padding-top: 14%;
+   display: flex;
+    flex-direction: row;
+}
+.txt-h1 h1{
+    font-size: 7.5vw;
+    font-family: 'Nebulica-Bold';
+}
+
+.txt-h1 h1:nth-of-type(2){
+    padding-left:27%;
+}
+
+.intro p{
+    font-size: 2vw;
+    font-family: 'Nebulica-Thin';
+    text-align: justify;
+}
