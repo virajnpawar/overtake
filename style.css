@@ -14,15 +14,17 @@ body {
 }
 
 ::selection {
-    background: #000000;  /* Gold highlight */
-    color: #ffffff;          /* Black text */
-  }
-  
-  ::-moz-selection {
+    background: #000000;
+    /* Gold highlight */
+    color: #ffffff;
+    /* Black text */
+}
+
+::-moz-selection {
     background: #000000;
     color: #ffffff;
-  }
-  
+}
+
 @font-face {
     font-family: 'Nebulica-Black';
     src: url('./assets/Fonts/Nebulica-Black.ttf') format('truetype');
@@ -30,49 +32,57 @@ body {
     font-style: normal;
     line-height: 1.6;
 }
+
 @font-face {
     font-family: 'Nebulica-Bold';
     src: url('./assets/Fonts/Nebulica-Bold.ttf') format('truetype');
     font-weight: bold;
     font-style: normal;
-    
+
 }
+
 @font-face {
     font-family: 'Nebulica-ExtraBold';
     src: url('./assets/Fonts/Nebulica-ExtraBold.ttf') format('truetype');
     font-weight: 800;
     font-style: normal;
 }
+
 @font-face {
     font-family: 'Nebulica-ExtraLight';
     src: url('./assets/Fonts/Nebulica-ExtraLight.ttf') format('truetype');
     /* font-weight: 200;
     font-style: normal; */
 }
+
 @font-face {
     font-family: 'Nebulica-Light';
     src: url('./assets/Fonts/Nebulica-Light.ttf') format('truetype');
     font-weight: 300;
     font-style: normal;
 }
+
 @font-face {
     font-family: 'Nebulica-Medium';
     src: url('./assets/Fonts/Nebulica-Medium.ttf') format('truetype');
     font-weight: 500;
     font-style: normal;
 }
+
 @font-face {
     font-family: 'Nebulica-Regular';
     src: url('./assets/Fonts/Nebulica-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
+
 @font-face {
     font-family: 'Nebulica-SemiBold';
     src: url('./assets/Fonts/Nebulica-SemiBold.ttf') format('truetype');
     font-weight: 600;
     font-style: normal;
 }
+
 @font-face {
     font-family: 'Nebulica-Thin';
     src: url('./assets/Fonts/Nebulica-Thin.ttf') format('truetype');
@@ -81,8 +91,8 @@ body {
 }
 
 
-.page-padding{
-    padding: 0 2rem;
+.page-padding {
+    padding: 0 3%;
 }
 
 .hero {
@@ -92,7 +102,7 @@ body {
 
 }
 
-.logo{
+.logo {
     width: 12%;
     height: auto;
     margin: 2% 0 0 0;
@@ -124,7 +134,7 @@ body {
     pointer-events: none;
 }
 
-.title-1{
+.title-1 {
     margin-top: 5%;
 }
 
@@ -141,7 +151,7 @@ body {
     margin-top: -4%;
 }
 
-.title-1 h1{
+.title-1 h1 {
     font-size: 18.8vw;
     font-family: 'Nebulica-Bold';
 }
@@ -152,18 +162,20 @@ body {
 
 .tag {
     position: absolute;
-    top: 53%; /* Adjust as needed for vertical overlap */
+    top: 53%;
+    /* Adjust as needed for vertical overlap */
     z-index: 2;
-    pointer-events: none; /* Optional: so it doesn't block clicks */
+    pointer-events: none;
+    /* Optional: so it doesn't block clicks */
 }
 
 
-.tag h2{
+.tag h2 {
     font-size: 3.5vw;
     font-family: 'Nebulica-ExtraLight'
 }
 
-.flag{
+.flag {
     display: flex;
     flex-direction: row;
 }
@@ -173,40 +185,67 @@ body {
 
 }
 
-.flag img{
+.flag img {
     width: 20vw;
     height: auto;
 }
 
+.introparent {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+}
+
 .intro {
     color: #ffffff;
-    height: 100vh;
-    width: 100%;
+    Padding: 0 2rem;
+    height: 18vh;
+    width: 95%;
+
     background-image: url('assets/image/page2.png');
     background-size: cover;
-    background-position: center;
+    /* background-position: center; */
+    background-position: 0 38%;
 }
 
-.services{
+.services {
     height: 100vh;
     width: 100%;
 }
 
-.txt-h1{
-    padding-top: 14%;
-   display: flex;
+.txt-h1 {
+    padding-top: 15%;
+    display: flex;
     flex-direction: row;
 }
-.txt-h1 h1{
+
+.txt-h1 h1 {
     font-size: 7.5vw;
     font-family: 'Nebulica-Bold';
 }
 
-.txt-h1 h1:nth-of-type(2){
-    padding-left:27%;
+.txt-h1 h1:nth-of-type(1){
+    padding-right:3%;
 }
 
-.intro p{
+.txt-h1 h1:nth-of-type(2){
+    display: inline-block;
+    padding-left:23%;
+}
+
+/* .we-word {
+    display: inline-block;
+    padding-left: 27%;
+} */
+
+.scramble-text {
+    visibility: hidden;
+  }
+
+.intro p {
+    width:75vw;
     font-size: 2vw;
     font-family: 'Nebulica-Thin';
     text-align: justify;
