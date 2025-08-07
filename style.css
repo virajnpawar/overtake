@@ -11,6 +11,8 @@ body {
     color: #000000;
     height: 100%;
     width: 100%;
+    overflow: hidden;
+
 }
 
 ::selection {
@@ -26,70 +28,77 @@ body {
 }
 
 @font-face {
-    font-family: 'Nebulica-Black';
-    src: url('./assets/Fonts/Nebulica-Black.ttf') format('truetype');
-    font-weight: 900;
-    font-style: normal;
-    line-height: 1.6;
-}
-
-@font-face {
-    font-family: 'Nebulica-Bold';
-    src: url('./assets/Fonts/Nebulica-Bold.ttf') format('truetype');
-    font-weight: bold;
-    font-style: normal;
-
-}
-
-@font-face {
-    font-family: 'Nebulica-ExtraBold';
-    src: url('./assets/Fonts/Nebulica-ExtraBold.ttf') format('truetype');
-    font-weight: 800;
+    font-family: 'NFthin';
+    src: url('../assets/fonts/Nebulica-Thin.woff2') format('woff2');
+    font-weight: 100;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'Nebulica-ExtraLight';
-    src: url('./assets/Fonts/Nebulica-ExtraLight.ttf') format('truetype');
-    /* font-weight: 200;
-    font-style: normal; */
-}
-
-@font-face {
-    font-family: 'Nebulica-Light';
-    src: url('./assets/Fonts/Nebulica-Light.ttf') format('truetype');
-    font-weight: 300;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Nebulica-Medium';
-    src: url('./assets/Fonts/Nebulica-Medium.ttf') format('truetype');
-    font-weight: 500;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Nebulica-Regular';
-    src: url('./assets/Fonts/Nebulica-Regular.ttf') format('truetype');
+    font-family: 'NFextraLight';
+    src: url('../assets/fonts/Nebulica-ExtraLight.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'Nebulica-SemiBold';
-    src: url('./assets/Fonts/Nebulica-SemiBold.ttf') format('truetype');
+    font-family: 'NFlight';
+    src: url('../assets/fonts/Nebulica-Light.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NFregular';
+    src: url('../assets/fonts/Nebulica-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NFmedium';
+    src: url('../assets/fonts/Nebulica-Medium.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NFsemiBold';
+    src: url('../assets/fonts/Nebulica-SemiBold.woff2') format('woff2');
     font-weight: 600;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'Nebulica-Thin';
-    src: url('./assets/Fonts/Nebulica-Thin.ttf') format('truetype');
-    font-weight: 100;
+    font-family: 'NFbold';
+    src: url('../assets/fonts/Nebulica-Bold.woff2') format('woff2');
+    font-weight: normal;
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'NFextraBold';
+    src: url('../assets/fonts/Nebulica-ExtraBold.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NFblack';
+    src: url('../assets/fonts/Nebulica-Black.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+
+
+.bold {
+    font-family: 'NFbold',sans-serif;
+    font-weight: 600;
+
+}
 
 .page-padding {
     padding: 0 3%;
@@ -153,7 +162,8 @@ body {
 
 .title-1 h1 {
     font-size: 18.8vw;
-    font-family: 'Nebulica-Bold';
+    font-family: 'NFbold';
+    font-weight: normal;
 }
 
 .title-1 {
@@ -172,7 +182,8 @@ body {
 
 .tag h2 {
     font-size: 3.5vw;
-    font-family: 'Nebulica-ExtraLight'
+    font-family: 'NFlight';
+    font-weight: normal;
 }
 
 .flag {
@@ -200,13 +211,12 @@ body {
 
 .intro {
     color: #ffffff;
-    Padding: 0 2rem;
+    /* Padding: 0 2rem; */
     height: 18vh;
     width: 95%;
 
     background-image: url('assets/image/page2.png');
     background-size: cover;
-    /* background-position: center; */
     background-position: 0 38%;
 }
 
@@ -223,16 +233,17 @@ body {
 
 .txt-h1 h1 {
     font-size: 7.5vw;
-    font-family: 'Nebulica-Bold';
+    font-family: 'NFbold';
+    font-weight: normal;
 }
 
-.txt-h1 h1:nth-of-type(1){
-    padding-right:3%;
+.txt-h1 h1:nth-of-type(1) {
+    padding-right: 3%;
 }
 
-.txt-h1 h1:nth-of-type(2){
+.txt-h1 h1:nth-of-type(2) {
     display: inline-block;
-    padding-left:23%;
+    padding-left: 23%;
 }
 
 /* .we-word {
@@ -242,11 +253,59 @@ body {
 
 .scramble-text {
     visibility: hidden;
-  }
+}
 
 .intro p {
-    width:75vw;
+    width: 75vw;
     font-size: 2vw;
-    font-family: 'Nebulica-Thin';
+    font-family: 'NFthin',sans-serif;
     text-align: justify;
+}
+
+.introScroll {
+    margin-top: 5%;
+    width: 300%;
+    display: flex;
+    margin-bottom: 5%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+
+
+.introScroll img{
+    width: auto;
+    height: auto;
+    margin-right: -0.01%;
+}
+
+.slidertext{
+    background-color: #ffffff;
+    color: black;
+    display: flex;
+    align-items: center;
+    /* padding: 8px 0; */
+    font-weight: bold;
+    font-size: 16px;
+    white-space: nowrap;
+    width: 100%;
+    flex: 1;
+    z-index: 10;
+}
+
+.introScroll h3{
+    background-color: #ffffff;
+    font-size: 2vw;
+    font-family: 'NFthin',sans-serif;
+    text-align: center;
+    align-content: center;
+    padding: 0 4% ;
+}
+
+.introScroll h4{
+    background-color: #ffffff;
+    font-size: 2vw;
+    font-family: 'NFthin',sans-serif;
+    text-align: center;
+    align-content: center;
 }

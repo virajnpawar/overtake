@@ -1,122 +1,65 @@
 // Initialize Lenis
 const lenis = new Lenis({
-    autoRaf: true,
+  autoRaf: true,
 });
 
 function raf(time) {
-    lenis.raf(time);
-    requestAnimationFrame(raf);
+  lenis.raf(time);
+  requestAnimationFrame(raf);
 }
 
 requestAnimationFrame(raf);
 
+// scramble-type
+(function () {
+  const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:',.<>?/~";
 
-// text effect
-const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:',.<>?/~";
+  function runScrambleType(element) {
+    const targetText = element.textContent.trim();
+    let currentIndex = 0;
 
-function scrambleText(element) {
-  const targetText = element.textContent.trim();
-  let currentIndex = 0;
+    function animateLetter(index) {
+      let frame = 0;
+      const interval = setInterval(() => {
+        let output = "";
 
-  function animateLetter(index) {
-    let frame = 0;
-    const interval = setInterval(() => {
-      let output = "";
-
-      for (let i = 0; i < targetText.length; i++) {
-        if (i < index) {
-          output += targetText[i];
-        } else if (i === index) {
-          output += characters[Math.floor(Math.random() * characters.length)];
-        } else {
-          break;
+        for (let i = 0; i < targetText.length; i++) {
+          if (i < index) {
+            output += targetText[i];
+          } else if (i === index) {
+            output += characters[Math.floor(Math.random() * characters.length)];
+          } else {
+            break;
+          }
         }
-      }
 
-      output += "_"; // cursor
-      element.textContent = output;
-      frame++;
+        output += "_"; // cursor
+        element.textContent = output;
+        frame++;
 
-      if (frame > 2) {
-        clearInterval(interval);
-        currentIndex++;
-        element.textContent = targetText.slice(0, currentIndex) + "_";
-        if (currentIndex < targetText.length) {
-          setTimeout(() => animateLetter(currentIndex), 50);
-        } else {
-          element.textContent = targetText; // final display (no cursor)
+        if (frame > 2) {
+          clearInterval(interval);
+          currentIndex++;
+          element.textContent = targetText.slice(0, currentIndex) + "_";
+          if (currentIndex < targetText.length) {
+            setTimeout(() => animateLetter(currentIndex), 50);
+          } else {
+            element.textContent = targetText; // Final without cursor
+          }
         }
-      }
-    },  30);
+      }, 30);
+    }
+
+    animateLetter(0);
   }
 
-  animateLetter(0);
-}
-
-// Apply to all elements with the class .scramble-type
-window.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll(".scramble-type").forEach(el => scrambleText(el));
-});
-
-//scramble text
-
-const char = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:',.<>?/~";
-
-function scrambleText(element) {
-  element.style.visibility = "visible";
-  
-  const targetText = element.textContent.trim();
-  let currentIndex = 0;
-
-  function animateLetter(index) {
-    let frame = 0;
-    const interval = setInterval(() => {
-      let output = "";
-
-      for (let i = 0; i < targetText.length; i++) {
-        if (i < index) {
-          output += targetText[i];
-        } else if (i === index) {
-          output += char[Math.floor(Math.random() * char.length)];
-        } else {
-          break;
-        }
-      }
-
-      output += "_"; // cursor
-      element.textContent = output;
-      frame++;
-
-      if (frame > 2) {
-        clearInterval(interval);
-        currentIndex++;
-        element.textContent = targetText.slice(0, currentIndex) + "_";
-        if (currentIndex < targetText.length) {
-          setTimeout(() => animateLetter(currentIndex), 10 );
-        } else {
-          startBlinkingCursor(element, targetText); // ✅ call blink after finish
-        }
-      }
-    }, 1);
-  }
-
-  animateLetter(0);
-}
-
-// ✅ Cursor Blinking
-function startBlinkingCursor(element, finalText) {
-  let blink = true;
-  setInterval(() => {
-    element.textContent = blink ? finalText + "_" : finalText + " ";
-    blink = !blink;
-  }, 500);
-}
-
+  window.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".scramble-type").forEach(el => runScrambleType(el));
+  });
+})();
 
 // page2
 gsap.registerPlugin(ScrollTrigger);
-
-
 
 gsap.to(".intro", {
   height: "100vh",
@@ -128,51 +71,179 @@ gsap.to(".intro", {
     // markers: true,
     start: "top 74%",
     end: "top 0",
-    scrub:2,
-  }
-});
-
-// gsap.from(".txt-h1", {
-//   x: "-300%",
-//   scrollTrigger: {
-//     trigger: ".introparent",
-//     scroller: "body",
-//     // markers: true,
-//     start: "top 0%",
-//     end: "top -100%",
-//     scrub: 2,
-//     pin:true
-//   }
-// });
-
-// gsap.from(".we-word", {
-//   paddingLeft:"0",
-//   scrollTrigger: {
-//     trigger: ".introparent",
-//     scroller: "body",
-//     markers: true,
-//     start: "top -10%",
-//     end: "top -110%",
-//     scrub: 2,
-//     pin:true
-//   }
-// });
-
-let tl = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".introparent",
-    scroller: "body",
-    start: "top 0%",
-    end: "top -100%",
     scrub: 2,
-    pin: true,
-    markers: true,
   }
 });
 
-tl.from(".txt-h1", { x: "-300%" })
-  .from(".txt-h1 h1:nth-of-type(2)", { paddingLeft: "0%" })
-  .to(".scramble-text", {
-    onStart: () => scrambleText(document.querySelector(".scramble-text"))
+
+// (function () {
+//   const charSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:',.<>?/~";
+//   const element = document.querySelector(".scramble-text");
+//   const originalText = element.textContent.trim();
+//   const textLength = originalText.length;
+//   let scrambleStarted = false;
+//   const startAfter = 2; // how many characters to skip at the beginning
+
+//   function scrambleByProgress(progress) {
+//     if (!element || !originalText) return;
+
+//     let visibleCount = Math.floor(progress * textLength);
+
+//     if (visibleCount < startAfter) {
+//       element.textContent = ""; // hide until 2 chars worth of scroll
+//       return;
+//     }
+
+//     let output = "";
+//     for (let i = 0; i < textLength; i++) {
+//       if (i < visibleCount) {
+//         output += originalText[i];
+//       } else if (i === visibleCount) {
+//         output += charSet[Math.floor(Math.random() * charSet.length)];
+//       } else {
+//         break;
+//       }
+//     }
+
+//     if (visibleCount < textLength) {
+//       output += "_";
+//     }
+
+//     element.textContent = output;
+//   }
+
+//   gsap.timeline({
+//     scrollTrigger: {
+//       trigger: ".introparent",
+//       start: "top -150%",
+//       end: "top -200%",
+//       scrub: 3,
+//       // pin: true,
+//       scroller: "body",
+//       markers: false,
+//       onUpdate: (self) => {
+//         if (!scrambleStarted) {
+//           element.style.visibility = "visible";
+//           scrambleStarted = true;
+//         }
+//         scrambleByProgress(self.progress);
+//       },
+//       onLeave: () => {
+//         element.textContent = originalText;
+//       }
+//     }
+//   });
+// })();
+
+// let tl = gsap.timeline({
+//   scrollTrigger: {
+//     trigger: ".introparent",
+//     scroller: "body",
+//     start: "top 0%",
+//     end: "top -150%",
+//     scrub: 2,
+//     pin: true,
+//     markers: true,
+    
+//   }
+// });
+
+// tl.from(".txt-h1", { x: "-300%" })
+//   .from(".txt-h1 h1:nth-of-type(2)", { paddingLeft: "0%" })
+//   .to(".introScroll", {
+//     transform: "translateX(-20%)",
+//   })
+
+(function () {
+  const charSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:',.<>?/~";
+  const element = document.querySelector(".scramble-text");
+  const originalText = element.textContent.trim();
+  const textLength = originalText.length;
+  let scrambleStarted = false;
+
+  function scrambleByProgress(progress) {
+    if (!element || !originalText) return;
+
+    const startAfter = 2;
+    let visibleCount = Math.floor(progress * textLength);
+
+    if (visibleCount < startAfter) {
+      element.textContent = "";
+      return;
+    }
+
+    let output = "";
+    for (let i = 0; i < textLength; i++) {
+      if (i < visibleCount) {
+        output += originalText[i];
+      } else if (i === visibleCount) {
+        output += charSet[Math.floor(Math.random() * charSet.length)];
+      } else {
+        break;
+      }
+    }
+
+    if (visibleCount < textLength) {
+      output += "_";
+    }
+
+    element.textContent = output;
+  }
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".introparent",
+      scroller: "body",
+      start: "top 0%",
+      end: "top -400%",
+      scrub: 2,
+      pin: true,
+      // markers: true,
+      onUpdate: (self) => {
+        if (scrambleStarted) {
+          const scrambleSectionStart = 0.4;
+          const scrambleSectionEnd = 0.6;
+          let p = (self.progress - scrambleSectionStart) / (scrambleSectionEnd - scrambleSectionStart);
+        
+          // Clamp the progress between 0 and 1
+          p = Math.max(0, Math.min(1, p));
+        
+          // Only scramble if still in range
+          if (p < 1) {
+            scrambleByProgress(p);
+          } else {
+            element.textContent = originalText; // Ensure final clean text
+            // scrambleStarted = false; // Stop updating
+          }
+        }
+        
+      },
+      onLeave: () => {
+        element.textContent = originalText;
+      }
+    }
   });
 
+  // Timeline structure:
+  tl.from(".txt-h1", {
+    x: "-300%",
+    duration: 1
+  })
+  .from(".txt-h1 h1:nth-of-type(2)", {
+    paddingLeft: "0%",
+    duration: 1
+  })
+  // Add scramble activation here, after previous tween completes
+  .add(() => {
+    element.style.visibility = "visible";
+    scrambleStarted = true;
+  })
+  // Dummy tween just to occupy scroll space for scrambling effect
+  .to({}, { duration: 3})
+  // Final animation after scramble is complete
+  .to(".introScroll", {
+    transform: "translateX(-23%)",
+    duration: 2
+  });
+
+})();
